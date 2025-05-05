@@ -72,6 +72,24 @@ Total loss for the student:
 ```math
 L = \text{CE}(y, \hat{y}) + \alpha \cdot \text{MSE}(f_s, f_v) + \beta \cdot \text{MSE}(f_s, f_{ecg}) + \gamma \cdot \text{MSE}(f_s, f_{eda}) + \delta \cdot \text{MSE}(f_s, f_{rr})
 ```
+## Future Work
+
+To further enhance the performance and extend the understanding of modality-specific contributions, we plan to explore the following directions:
+
+- **Model Architecture Enhancements**:  
+  Introduce advanced backbone networks for both teacher and student models to capture more complex representations.
+
+- **Data Augmentation**:  
+  Apply augmentation techniques tailored for each modality, such as:
+  - SpecAugment or frequency masking for log-mel spectrograms,
+  - Geometric and color jittering for GAF images,
+  - Temporal jittering for video frames.
+
+- **Ablation Study on Knowledge Distillation**:  
+  Conduct systematic ablation experiments to evaluate the effectiveness of distillation from each modality (video, ECG, EDA, RR) into the audio-based student model. This will help quantify the individual impact of each privileged signal.
+
+These improvements aim to deepen our understanding of cross-modal knowledge transfer and build more robust stress recognition systems in low-resource (single modality) settings.
+
 
 ## Reference
 
@@ -85,5 +103,5 @@ In MARS, a single RGB stream learns from a more informative optical flow stream 
 
 ## AI & Computer Vision lab at Konkuk University
 
-### Advised by Prof. EunYi Kim
-### Supported by Konkuk University
+- Advised by Prof. EunYi Kim
+- Supported by Konkuk University
