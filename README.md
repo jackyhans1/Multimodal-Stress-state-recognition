@@ -30,13 +30,13 @@ Stress detection is inherently multimodal. While audio-based models are practica
 
 ### Split Strategy
 
-* Data is split based on subject IDs
-* Each subject's data belongs to one split only
+* Data is split based on participant's IDs
+* Each participant's data belongs to one split only
 * Distribution:
 
-  * Train: 36 subjects
-  * Val: 8 subjects
-  * Test: 8 subjects
+  * Train: 36 participants
+  * Val: 8 participants
+  * Test: 8 participants
 * Ensures near-original class ratio across splits
 
 ## Modalities & Preprocessing
