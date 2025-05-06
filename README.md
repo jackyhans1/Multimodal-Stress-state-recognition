@@ -1,5 +1,6 @@
 # StressID Multimodal Distillation Model
 
+## My works are in folder jihan
 This repository contains the implementation of a multimodal learning pipeline using the [StressID dataset](https://project.inria.fr/stressid/), focused on recognizing human stress levels from various modalities: audio, video, ECG, EDA, and respiratory signals. The core objective is to train a lightweight student model using privileged information from multiple rich modalities via a knowledge distillation strategy.
 
 ## Research Objective
