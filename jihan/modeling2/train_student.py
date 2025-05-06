@@ -8,7 +8,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, f1_score
 import config, datasets, models, utils
 from utils import custom_collate, get_class_weights, unweighted_accuracy
 
-SAVE_DIR = "/home/ai/Internship/stressID/jihan/modeling2/checkpoint"
+SAVE_DIR = "/home/ai/Internship/stressID/Multimodal-Stress-state-recognition/jihan/modeling2/checkpoint"
 os.makedirs(SAVE_DIR, exist_ok=True)
 
 def run_epoch(student, teacher, loader, criterion_ce, optimizer=None):

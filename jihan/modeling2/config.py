@@ -11,7 +11,7 @@ CSV_PATH  = "/data/StressID/label_jihan.csv"
 
 # Training hyper‑parameters
 NUM_CLASSES = 3
-BATCH_SIZE  = 4
+BATCH_SIZE  = 8
 NUM_EPOCHS  = 50
 LEARNING_RATE = 1e-5
 EARLY_STOPPING_PATIENCE = 10

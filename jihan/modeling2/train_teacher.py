@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import config, datasets, models, utils
 from utils import custom_collate, get_class_weights, unweighted_accuracy
 
-SAVE_DIR = "/home/ai/Internship/stressID/jihan/modeling2/checkpoint"
+SAVE_DIR = "/home/ai/Internship/stressID/Multimodal-Stress-state-recognition/jihan/modeling2/checkpoint"
 os.makedirs(SAVE_DIR, exist_ok=True)
 
 def run_epoch(model, loader, criterion, optimizer=None):

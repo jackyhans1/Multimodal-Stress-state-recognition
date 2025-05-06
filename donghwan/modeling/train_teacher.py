@@ -2,16 +2,17 @@ import os, torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
+from torch.optim.lr_scheduler import ReduceLROnPlateau
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, f1_score
 import matplotlib.pyplot as plt
 import seaborn as sns
 import config, datasets, models, utils
 from utils import custom_collate, get_class_weights, unweighted_accuracy
-
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module="torchvision.io._video_deprecation_warning")
 # Checkpoint directory
 SAVE_DIR = "/home/ai/Internship/stressID/Multimodal-Stress-state-recognition/donghwan/modeling/checkpoint"
 os.makedirs(SAVE_DIR, exist_ok=True)
-
 
 def run_epoch(model, loader, criterion, optimizer=None):
     train = optimizer is not None
@@ -49,7 +50,6 @@ def run_epoch(model, loader, criterion, optimizer=None):
 
     return loss_meter.avg, acc_meter.avg, uar, f1, all_preds, all_labels
 
-
 def plot_metrics(train_vals, val_vals, title, ylabel, filename):
     plt.figure()
     plt.plot(train_vals, label="Train")
@@ -60,7 +60,6 @@ def plot_metrics(train_vals, val_vals, title, ylabel, filename):
     plt.legend()
     plt.savefig(os.path.join(SAVE_DIR, filename))
     plt.close()
-
 
 def main():
     # Data loaders
@@ -84,11 +83,21 @@ def main():
         collate_fn=custom_collate
     )
 
-    # Model, loss, optimizer, early stopping
+    # Model, loss, optimizer, scheduler, early stopping
     model = models.TeacherNet().to(config.DEVICE)
     weights = get_class_weights(split="train").to(config.DEVICE)
     criterion = nn.CrossEntropyLoss(weight=weights)
     optimizer = optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
+    
+    # Define ReduceLROnPlateau scheduler
+    scheduler = ReduceLROnPlateau(
+        optimizer,
+        mode='max',       # UAR is better when higher, so use 'max'
+        factor=0.1,       # Reduce learning rate by a factor of 0.1
+        patience=5,       # Wait 5 epochs without improvement
+       
+    )
+    
     stopper   = utils.EarlyStopping(patience=config.EARLY_STOPPING_PATIENCE)
 
     train_losses, val_losses = [], []
@@ -108,6 +117,9 @@ def main():
 
         train_losses.append(tr_loss); val_losses.append(val_loss)
         train_accs.append(tr_acc);    val_accs.append(val_acc)
+
+        # Update learning rate based on validation UAR
+        scheduler.step(val_uar)
 
         if stopper.step(val_uar, model):
             break
