@@ -11,7 +11,7 @@ CSV_PATH  = "/data/StressID/label_jihan.csv"
 
 # Training hyper‑parameters
 NUM_CLASSES = 3
-BATCH_SIZE  = 2
+BATCH_SIZE  = 4
 NUM_EPOCHS  = 50
 LEARNING_RATE = 1e-5
 EARLY_STOPPING_PATIENCE = 10
@@ -22,10 +22,10 @@ VIDEO_FEAT_DIM  = 128
 PHYSIO_FEAT_DIM = 128
 
 # knowledge distillation weights
-ALPHA = 1.0  # audio‑video
-BETA  = 1.0  # audio‑ecg
-GAMMA = 1.0  # audio‑eda
-DELTA = 1.0  # audio‑rr
+ALPHA = 10.0  # audio‑video
+BETA  = 10.0  # audio‑ecg
+GAMMA = 10.0  # audio‑eda
+DELTA = 10.0  # audio‑rr
 
 import torch, os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"

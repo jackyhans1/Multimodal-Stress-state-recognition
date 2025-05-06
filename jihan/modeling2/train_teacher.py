@@ -62,8 +62,8 @@ def main():
     train_set = datasets.StressMultimodalDataset("train", nf=16)
     val_set   = datasets.StressMultimodalDataset("val", nf=16)
 
-    train_loader = DataLoader(train_set, batch_size=config.BATCH_SIZE, shuffle=True, num_workers=2, pin_memory=True, collate_fn=custom_collate)
-    val_loader   = DataLoader(val_set, batch_size=config.BATCH_SIZE, shuffle=False, num_workers=2, pin_memory=True, collate_fn=custom_collate)
+    train_loader = DataLoader(train_set, batch_size=config.BATCH_SIZE, shuffle=True, num_workers=4, pin_memory=True, collate_fn=custom_collate)
+    val_loader   = DataLoader(val_set, batch_size=config.BATCH_SIZE, shuffle=False, num_workers=4, pin_memory=True, collate_fn=custom_collate)
 
     model = models.TeacherNet().to(config.DEVICE)
 
