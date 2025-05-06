@@ -17,9 +17,9 @@ LEARNING_RATE = 1e-5
 EARLY_STOPPING_PATIENCE = 10
 
 # Feature dimensions
-AUDIO_FEAT_DIM  = 256
-VIDEO_FEAT_DIM  = 256
-PHYSIO_FEAT_DIM = 256
+AUDIO_FEAT_DIM  = 128
+VIDEO_FEAT_DIM  = 128
+PHYSIO_FEAT_DIM = 128
 
 # knowledge distillation weights
 ALPHA = 1.0  # audio‑video
