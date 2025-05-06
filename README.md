@@ -96,8 +96,8 @@ These improvements aim to deepen our understanding of cross-modal knowledge tran
 
 This project is inspired by the privileged learning strategy proposed in:
 
-**MARS: Motion-Augmented RGB Stream Distillation for Action Recognition**  
-By T. Piergiovanni, A. Angelova  
+**MARS: Motion-Augmented RGB Stream for Action Recognition**  
+By T. Piergiovanni, A. Angelova (2019, CVPR)
 [https://arxiv.org/abs/2007.12645](https://arxiv.org/abs/2007.12645)
 
 In MARS, a single RGB stream learns from a more informative optical flow stream during training. Similarly, our student model (audio-only) learns from richer teacher features derived from video and physiological signals — modalities that are not available at test time. This concept of *distillation from privileged modalities* forms the basis of our training strategy.
