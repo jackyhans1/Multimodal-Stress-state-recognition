@@ -14,23 +14,21 @@ NUM_CLASSES = 3
 BATCH_SIZE  = 2
 NUM_EPOCHS  = 50
 LEARNING_RATE = 1e-5
+WEIGHT_DECAY  = 1e-4
 EARLY_STOPPING_PATIENCE = 10
-DROPOUT       = 0.3    # classifier 앞 드롭아웃 확률
-WEIGHT_DECAY  = 1e-4   # optimizer 의 weight decay (L2 penalty)
-
 
 # Feature dimensions
-AUDIO_FEAT_DIM  = 128
-VIDEO_FEAT_DIM  = 128
-PHYSIO_FEAT_DIM = 128
+AUDIO_FEAT_DIM  = 256
+VIDEO_FEAT_DIM  = 256
+PHYSIO_FEAT_DIM = 256
 
 # knowledge distillation weights
-ALPHA = 1.0  # audio‑video
-BETA  = 1.0  # audio‑ecg
-GAMMA = 1.0  # audio‑eda
-DELTA = 1.0  # audio‑rr
+ALPHA = 10.0  # audio‑video
+BETA  = 10.0  # audio‑ecg
+GAMMA = 10.0  # audio‑eda
+DELTA = 10.0  # audio‑rr
 
 import torch, os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
