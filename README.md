@@ -25,9 +25,9 @@ Stress detection is inherently multimodal. While audio-based models are practica
   * ECG, EDA, RR (.png)
 * **Label**: `affect3-class`
 
-  * 0: Neutral
-  * 1: Stress
-  * 2: Amusement
+  * 0: Low level Stress
+  * 1: Mid level Stress
+  * 2: High level Stress
 
 ### Split Strategy
 

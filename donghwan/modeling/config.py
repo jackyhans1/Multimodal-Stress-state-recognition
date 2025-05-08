@@ -6,7 +6,7 @@ ECG_DIR   = "/data/StressID/jihan/GAF_ECG"
 EDA_DIR   = "/data/StressID/jihan/GAF_EDA"
 RR_DIR    = "/data/StressID/jihan/GAF_RR"
 VIDEO_DIR = "/data/StressID/jihan/video"
-
+BACKBONE_FREEZE_RATIO = 0.8   # 백본 파라미터 중 80%를 freeze
 CSV_PATH  = "/data/StressID/label_jihan.csv"
 
 # Training hyper‑parameters
@@ -32,5 +32,5 @@ DELTA = 1.0  # audio‑rr
 
 import torch, os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
